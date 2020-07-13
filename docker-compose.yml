@@ -5,7 +5,7 @@ services:
     container_name: zabbix-postgres-db
     environment:
         POSTGRES_USER: zabbix
-        POSTGRES_PASSWORD: pass
+        POSTGRES_PASSWORD: <DB password goes here, make one up.>
         POSTGRES_DB: zabbix
     volumes:
       - /var/lib/postgresql/data:/var/lib/postgresql/data
@@ -15,7 +15,7 @@ services:
     environment:
       DB_SERVER_HOST: "zabbix-pgsql"
       POSTGRES_USER: zabbix
-      POSTGRES_PASSWORD: pass
+      POSTGRES_PASSWORD: <Password for DB you created at line 8>
     ports:
       - '10051:10051'
     links:
@@ -28,9 +28,9 @@ services:
     environment:
       DB_SERVER_HOST: zabbix-pgsql
       POSTGRES_USER: zabbix
-      POSTGRES_PASSWORD: pass
+      POSTGRES_PASSWORD: <Password for DB you created at line 8>
       ZBX_SERVER_HOST: "zabbix-server"
-      PHP_TZ: Europe/Berlin
+      PHP_TZ: <Timezone goes here, e.g. Europe/Amsterdam>
     ports:
       - '80:8080'
       - '443:8443'
